@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+  >
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/riv"
+        android:scaleType="fitCenter"
+        app:riv_corner_radius="30dip"
+        app:riv_border_width="2dip"
+        app:riv_border_color="#333333"
+        app:riv_mutate_background="true"
+        app:riv_tile_mode="repeat"
+        app:riv_oval="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="5dp"
+        android:paddingBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/tvLikes"
+        android:layout_alignEnd="@+id/tvLikes" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ivPhoto"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:minHeight="50dp"
         android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground"/>
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_below="@+id/tvUsername"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+       />
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,10 +48,12 @@
         android:ellipsize="end"
         android:elegantTextHeight="false"
         android:maxLines="3"
-        android:textSize="20sp"
+        android:textSize="15sp"
+        android:textColor="#000000"
+        android:paddingBottom="15dp"
         android:layout_below="@+id/tvLikes"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+
+       />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,7 +61,50 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/tvLikes"
         android:layout_below="@+id/ivPhoto"
+        android:layout_toRightOf="@+id/ivLikeButton"
+
+
+     />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvUsername"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="25dp"
+        android:paddingTop="10dp"
+
+        android:layout_toRightOf="@+id/riv"
+
+       />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvTimePosted"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:paddingTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/tvComments"
+        android:layout_below="@+id/tvCaption"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:ellipsize="end"
+        android:maxLines="3" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:id="@+id/ivLikeButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ivPhoto"
+        />
 
 </RelativeLayout>

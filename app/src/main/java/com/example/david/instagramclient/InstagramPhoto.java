@@ -10,6 +10,9 @@ public class InstagramPhoto {
     public int imageHeight;
     public int likesCount;
     public CharSequence timePosted;
+    public String userPhoto;
+    public String comments;
+
 
 
 

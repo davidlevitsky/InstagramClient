@@ -1,6 +1,7 @@
 package com.example.david.instagramclient;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateUtils;
 import android.view.Menu;
@@ -23,6 +24,8 @@ public class PhotosActivity extends ActionBarActivity {
     public final static String CLIENT_ID = "b92352e5063c46c2a304392b7c4420a1";
     private ArrayList<InstagramPhoto> photos;
     private InstagramPhotosAdapter aPhotos;
+    private SwipeRefreshLayout swipeContainer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,34 @@ public class PhotosActivity extends ActionBarActivity {
         lvPhotos.setAdapter(aPhotos);
         // fetch the popular photos
         fetchPopularPhotos();
+
+
+        //*******
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                aPhotos.clear();
+                fetchPopularPhotos();
+                swipeContainer.setRefreshing(false);
+                        // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
     }
+
+
+
+
+    //*****
+
 
     //Trigger API Request
 
@@ -85,6 +115,9 @@ public class PhotosActivity extends ActionBarActivity {
                         photo.imageHeight = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height");
                         photo.likesCount = photoJSON.getJSONObject("likes").getInt("count");
                         photo.timePosted = DateUtils.getRelativeTimeSpanString(photoJSON.getLong("created_time") * 1000, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS);
+                        photo.userPhoto = photoJSON.getJSONObject("user").getString("profile_picture");
+                        // what do i do with comments - how to access, how to show
+                        //photo.comments = photoJSON.getJSONObject("comments").getJSONArray("data").getJSONObject("text").toString();
                         //how does it know that "count" results in an int?
                         photos.add(photo);
 
