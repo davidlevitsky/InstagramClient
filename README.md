@@ -14,7 +14,7 @@ Application features:
 6. Uses custom launcher icon 
 
 
-Implementation features:
+Implementation details:
 
 1. Custom library RoundedImageView creates circular image view for profile pictures
 2. Android Async and Picasso libraries load photos
