@@ -11,5 +11,6 @@ Main features:
 3. Custom library RoundedImageView displays profile picture of account that posted 
 4. Swipe up to refresh photo stream, colorful loading bar
 5. Maintains aspect ratio of Instagram photos
-6. Uses Android Async and Picasso libraries
+6. Custom launcher icon 
+7. Uses Android Async and Picasso libraries
 
