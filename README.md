@@ -15,6 +15,7 @@ Application features:
 
 
 Implementation features:
+
 1. Custom library RoundedImageView creates circular image view for profile pictures
 2. Android Async and Picasso libraries load photos
 3. SwipeRefreshLayout allows user to swipe down to refresh photo stream
